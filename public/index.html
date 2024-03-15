@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" ng-csp>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traversy</title>
     <base href="/">
     <link rel="icon" type="image/png" ng-href="./assets/img/logo.png">
-    <script defer src="./bundle.js"></script>
 </head>
+
+
 <body>
-    <div ng-view>
-        
-    </div>
+
+    <div ng-view></div>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="./assets/js/soft-design-system.js"></script>
+    <script defer src="./bundle.js"></script>
 </body>
+
 </html>

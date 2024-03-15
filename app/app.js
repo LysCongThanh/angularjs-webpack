@@ -50,7 +50,13 @@ app.config(['$locationProvider', ($locationProvider) => {
  * App constructor
  */
 app.run(['$css', ($css) => {
-    $css.add('./assets/css/soft-design-system.css');
+    $css.add('./assets/css/soft-design-system.css?v=1.0.9');
     $css.add('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
-    $css.add('./assets/css/nucleo-svg.css')
-}])
+    $css.add('./assets/css/nucleo-svg.css');
+    $css.add('./assets/css/nucleo-icons.css');
+    $css.add('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+    $css.add('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css')
+}]);
+
+import "./assets/js/core/bootstrap.bundle.min.js";
+import "./assets/js/core/popper.min.js";
