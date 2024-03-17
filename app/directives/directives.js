@@ -1,5 +1,7 @@
 import headerTemplate from "../views/blocks/header.html";
 import navTemplate from "../views/blocks/nav.html";
+import footerTemplate from "../views/blocks/footer.html";
+import headingTextTemplate from "../views/components/heading-text.html";
 
 const NavDirective = () => {
     return {
@@ -15,9 +17,25 @@ const HeaderDirective = () => {
     }
 }
 
+const FooterDirective = () => {
+    return {
+        restrict: "E",
+        template: footerTemplate
+    }
+}
+
+const HeadingText = () => {
+    return {
+        restrict: "E",
+        template: headingTextTemplate
+    }
+}
+
 const directives = {
     HeaderDirective,
-    NavDirective
+    NavDirective,
+    FooterDirective,
+    HeadingText
 }
 
 export default directives;
