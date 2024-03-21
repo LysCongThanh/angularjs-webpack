@@ -1,17 +1,18 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
 
     entry: "./app/app.js",
 
     output: {
-        filename: "bundle.js", // Tên file được compile ra
-        path: path.resolve(__dirname, "public"), // Nơi chứa file compile
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "public"),
     },
 
     module: {
-        //Nguyên tắc
+
         rules: [
             {
                 test: /\.js$/,
@@ -46,6 +47,11 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+
         new CopyWebpackPlugin({
             patterns: [
                 {

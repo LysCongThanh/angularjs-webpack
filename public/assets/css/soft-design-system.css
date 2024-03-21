@@ -34082,3 +34082,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
     font-size: 2.5rem !important;
     letter-spacing: 2px;
 }
+
+/* Slide in và out từ bên phải */
+.page-view {
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.page-view.ng-enter {
+    transform: translateX(100%);
+}
+
+.page-view.ng-enter.ng-enter-active {
+    transform: translateX(0);
+}
+
+.page-view.ng-leave {
+    transform: translateX(0);
+}
+
+.page-view.ng-leave.ng-leave-active {
+    transform: translateX(-100%);
+}

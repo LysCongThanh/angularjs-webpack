@@ -1,1 +1,1 @@
-# angularjs-webpack
+Mở terminal: Chạy lệnh "npm run start" hoặc "php -S localhost:9000 -t public"

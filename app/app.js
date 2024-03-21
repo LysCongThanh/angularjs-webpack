@@ -2,10 +2,12 @@
 import angular from "angular";
 import ngRoute from "angular-route";
 import angularCSS from "angular-css";
+import ngAnimate from "angular-animate"
 
 // Import custom modules
 import routesModule from "./modules/routes.module";
 import directivesModule from "./modules/directives.module";
+import filtersModule from "./modules/filters.module.js";
 
 // Create the main AngularJS module 'myApp'
 const app = angular.module('myApp', []);
@@ -16,6 +18,12 @@ const app = angular.module('myApp', []);
  * This allows the usage of ngRoute functionalities, such as routing.
  */
 app.requires.push(ngRoute);
+
+/**
+ * Apply ngAnimate package
+ * Add ngAnimate module as a dependency to navigate effectively.
+ */
+app.requires.push(ngAnimate);
 
 /**
  * Routes loading
@@ -37,6 +45,11 @@ app.requires.push(directivesModule.name);
 app.requires.push(angularCSS);
 
 /**
+ * 
+ */
+app.requires.push(filtersModule.name);
+
+/**
  * Configs loading
  * Configure the app by enabling HTML5 mode for clean URLs.
  * This configuration enhances the user experience by providing cleaner and more readable URLs.
@@ -50,13 +63,26 @@ app.config(['$locationProvider', ($locationProvider) => {
  * App constructor
  */
 app.run(['$css', ($css) => {
-    $css.add('./assets/css/soft-design-system.css?v=1.0.9');
     $css.add('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
-    $css.add('./assets/css/nucleo-svg.css');
+    // $css.add('./assets/css/nucleo-svg.css');
     $css.add('./assets/css/nucleo-icons.css');
-    $css.add('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    $css.add('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css')
+    $css.add('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+    $css.add('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 }]);
 
+app.run(($rootScope) => {
+    $rootScope.$on('$routeChangeStart', function () {
+        // Trước khi chuyển trang: thêm lớp CSS fade-out
+        angular.element(document.querySelector('.page-view')).addClass('fade-out');
+    });
+
+    $rootScope.$on('$routeChangeSuccess', function () {
+        // Khi chuyển trang thành công: loại bỏ lớp CSS fade-out và thêm lớp fade-in
+        angular.element(document.querySelector('.page-view')).removeClass('fade-out').addClass('fade-in');
+    });
+})
+
+import "./assets/css/soft-design-system.css";
 import "./assets/js/core/bootstrap.bundle.min.js";
 import "./assets/js/core/popper.min.js";
+import "./assets/css/mp-icons.css"
